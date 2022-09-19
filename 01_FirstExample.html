@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-09-19 Mon 19:29 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>01 第一个例子</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">01 第一个例子</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org59e0eab">1. 第一个例子</a>
+<ul>
+<li><a href="#org5693318">1.1. 例子：斐波拉契数列的递归式</a>
+<ul>
+<li><a href="#org65b7d33">1.1.1. 函数头</a></li>
+<li><a href="#orga5a95b8">1.1.2. 函数体</a></li>
+</ul>
+</li>
+<li><a href="#org5a8293f">1.2. 栈和栈溢出</a></li>
+<li><a href="#orgb65cc63">1.3. 例子： 迭代式斐波拉契函数</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org59e0eab" class="outline-2">
+<h2 id="org59e0eab"><span class="section-number-2">1.</span> 第一个例子</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+本章使用一个非常简单的例子来解释一些C语言的特征。 如果你已经了解了C语言的基本概念便可以跳过本章。
+</p>
+</div>
+
+<div id="outline-container-org5693318" class="outline-3">
+<h3 id="org5693318"><span class="section-number-3">1.1.</span> 例子：斐波拉契数列的递归式</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+让我们从一个结果为整数的简单数学函数开始介绍C语言的基本特征。这个函数将计算一个每一项都是前两项
+的和的数列，这个数列被称为斐波拉契数列，例如1,1,2,3,5,8,13,21,34,55,&#x2026;..
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">int</span>
+<span style="color: #bc6ec5; font-weight: bold;">fib</span> <span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">n</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+    <span style="color: #4f97d7; font-weight: bold;">if</span><span style="color: #bc6ec5;">(</span>n &lt;= <span style="color: #a45bad;">2</span><span style="color: #bc6ec5;">)</span>
+        <span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #a45bad;">1</span>; <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">&#38450;&#27490;&#26080;&#38480;&#36882;&#24402;</span><span style="color: #2aa1ae; background-color: #292e34;"> */</span>
+    <span style="color: #4f97d7; font-weight: bold;">else</span>
+        <span style="color: #4f97d7; font-weight: bold;">return</span> fib <span style="color: #bc6ec5;">(</span>n -<span style="color: #a45bad;">1</span><span style="color: #bc6ec5;">)</span> + fib <span style="color: #bc6ec5;">(</span>n-<span style="color: #a45bad;">2</span><span style="color: #bc6ec5;">)</span>;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+
+<p>
+C语言的若干特征都呈现在这个简单的例子中:
+</p>
+
+<ul class="org-ul">
+<li>函数定义，例子的前两行。</li>
+<li>参数 n, 第二行中两个括号之间的变量定义。当定义函数时使用形式参数在调用与被调用函数之间传递实际数值。</li>
+<li>算术。C语言使用‘+’ 和 ‘-’符号表示加法和减法。</li>
+<li>数值比较。操作符 ‘&lt;=’ 被用来判断小于等于。</li>
+<li>使用10进制表示整数。</li>
+<li>函数调用。 <b>fib</b> (n - 1)相当于调用函数fib并将n-1作为参数值传递给fib.</li>
+<li>注释，在‘/*’ 和‘*/’</li>
+</ul>
+<p>
+之间的内容。注释不会对程序运行产生影响。写注释的目的是便于他人阅读程序。在源代码中包含注释是极其重要的，注释提供了代码的背景信息以助于他人更快的理解代码。
+</p>
+<ul class="org-ul">
+<li>两种语句，return 语句和 if&#x2026;else语句。</li>
+<li>递归。函数 <b>fib</b> 调用了它自己；这种形式的函数调用被称为递归调用。递归在C语言中是被允许的并且很常用。</li>
+</ul>
+
+<p>
+函数 <b>fib</b> 如果不停的调用自己而不再某一时刻返回计算结果那么它将是一无是处的，所以定义递归函数时必须避免
+无限递归。
+</p>
+
+<p>
+函数 <b>fib</b> 中使用n是否小于或等于2作为递归终止的条件，所以最大递归次数是小于n的。
+</p>
+</div>
+
+
+<div id="outline-container-org65b7d33" class="outline-4">
+<h4 id="org65b7d33"><span class="section-number-4">1.1.1.</span> 函数头</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+在我们的例子中，使用前两行定义了函数头。函数头的目的是给函数一个在调用时使用的名字和如何调用它。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">int</span>
+<span style="color: #bc6ec5; font-weight: bold;">fib</span> <span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">n</span><span style="color: #4f97d7;">)</span>
+</pre>
+</div>
+
+<p>
+上述代码定义了一个名叫 <b>fib</b> 并返回一个整数并且使用整数类型变量n作为实际参数数值传递的函数。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga5a95b8" class="outline-4">
+<h4 id="orga5a95b8"><span class="section-number-4">1.1.2.</span> 函数体</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+函数定义中除去函数头剩下的部分被称为函数体。C语言的函数体必须写在一对大括号“{}”之间，函数体
+可以为空或多行语句和声明。语句用来实现函数的功能，声明用来定义变量和函数的名称等。每一个语句和
+生命都以分号";" 作为结束符。
+</p>
+
+
+<p>
+语句和声明中可能含有 <b>表达式</b>; 表达式是是一种对数据进行求值的结构，也可能对后续的执行产生影响。
+对比之下，语句并不含有值，它只通过它的功能来影响程序的后续执行。
+</p>
+
+<p>
+这个函数的函数体不包含声明，并且只有一条复杂的嵌套语句。这条嵌套语句中包含一下两种语句：
+</p>
+<ul class="org-ul">
+<li><p>
+return
+</p>
+
+<p>
+return 语句让函数立即终止执行。类似:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4f97d7; font-weight: bold;">return</span> value;
+</pre>
+</div>
+
+<p>
+上述代码的意义是对表达式求值并终止函数执行，例如：
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #a45bad;">1</span>;
+</pre>
+</div>
+<p>
+终止执行并返回整数1给调用者
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4f97d7; font-weight: bold;">return</span> fib<span style="color: #4f97d7;">(</span>n - <span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span> + fib<span style="color: #4f97d7;">(</span>n - <span style="color: #a45bad;">2</span><span style="color: #4f97d7;">)</span>;
+</pre>
+</div>
+<p>
+终止执行并返回两次函数调用产生的结果(整数)的和。
+</p></li>
+
+<li><p>
+if&#x2026;else
+</p>
+
+<p>
+if&#x2026;else 被称为条件语句。每当条件语句执行其将选择执行其后两个语句段中的一段并忽略另一段。例如：
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #4f97d7;">(</span>condition<span style="color: #4f97d7;">)</span>       <span style="color: #2aa1ae; background-color: #292e34;">/*</span><span style="color: #2aa1ae; background-color: #292e34;">&#26465;&#20214;&#34920;&#36798;&#24335;</span><span style="color: #2aa1ae; background-color: #292e34;">*/</span>
+  <span style="color: #4f97d7; font-weight: bold;">if</span>-<span style="color: #a45bad;">true</span>-statement  <span style="color: #2aa1ae; background-color: #292e34;">/*</span><span style="color: #2aa1ae; background-color: #292e34;">&#34920;&#36798;&#24335;&#30340;&#20540;&#20026;&#30495;&#25191;&#34892;&#36825;&#27573;</span><span style="color: #2aa1ae; background-color: #292e34;">*/</span>
+<span style="color: #4f97d7; font-weight: bold;">else</span>
+  <span style="color: #4f97d7; font-weight: bold;">if</span>-<span style="color: #a45bad;">false</span>-statment  <span style="color: #2aa1ae; background-color: #292e34;">/*</span><span style="color: #2aa1ae; background-color: #292e34;">&#34920;&#36798;&#24335;&#30340;&#20540;&#20026;&#20551;&#25191;&#34892;&#36825;&#27573;</span><span style="color: #2aa1ae; background-color: #292e34;">*/</span>
+</pre>
+</div>
+
+<p>
+此if&#x2026;else语句中的 <i>条件(condition)</i> 表达式很简单，其只考虑结果是否为真(true),即是否是一个非零值。
+(对于 n &lt;= 2 这样的比较操作表达式，其只会产生数值1或者0。当变量n中的数值小于等于整数2的时候结果为"真"(1)，
+否则为"假"(0)) 因此:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4f97d7; font-weight: bold;">if</span><span style="color: #4f97d7;">(</span>n &lt;= <span style="color: #a45bad;">2</span><span style="color: #4f97d7;">)</span>
+  <span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #a45bad;">1</span>;
+<span style="color: #4f97d7; font-weight: bold;">else</span>
+  <span style="color: #4f97d7; font-weight: bold;">return</span> fib<span style="color: #4f97d7;">(</span>n - <span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span> + fib<span style="color: #4f97d7;">(</span>n - <span style="color: #a45bad;">2</span><span style="color: #4f97d7;">)</span>;
+</pre>
+</div>
+
+<p>
+以上代码的第一行将判断n是否小于等于2.如果是n &lt;= 2 为1 那么执行
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #a45bad;">1</span>;
+</pre>
+</div>
+<p>
+否则执行
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4f97d7; font-weight: bold;">return</span> fib<span style="color: #4f97d7;">(</span>n - <span style="color: #a45bad;">1</span><span style="color: #4f97d7;">)</span> + fib<span style="color: #4f97d7;">(</span>n - <span style="color: #a45bad;">2</span><span style="color: #4f97d7;">)</span>;
+</pre>
+</div>
+<p>
+上面每一段语句都将终止当前函数的执行并返回一个数值。
+</p></li>
+</ul>
+
+<p>
+当使用C语言的整型(int)变量计算并存储斐波拉契函数(fib)时其最多只能计算到数列的第46项，因为当n等与47时将产生
+一个超出整型变量存储范围的整数。在程序的递归过程中fib(46)+fib(45)将返回一个不正确的数值，对于这种情况我们
+将其称为 <i>整数溢出</i> 。
+</p>
+
+<p>
+很多种情况都会导致溢出，但是正确使用符合变量类型所能存储最大最小范围的数值可以很好的避免数值溢出。
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5a8293f" class="outline-3">
+<h3 id="org5a8293f"><span class="section-number-3">1.2.</span> 栈和栈溢出</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+递归程序有个缺点: 程序可递归的次数会受到占内存大小的限制。在C语言中，每次函数调用都会从内存中分配一小块内存以
+供被调用函数使用知道被调用函数调用return语句才会释放这部分内存。C语言会从一块被称为栈的连续内存区域来给被调用
+函数来分配内存，所以这些分配给被调用函数的小内存块被称为栈帧。
+</p>
+
+<p>
+栈的大小是有限制的，如果程序试图从中分配太多帧那么会导致栈内存被填满而运行失败，可以把这种情况称为栈溢出。
+</p>
+
+<p>
+在GNU/Linux操作系统上如果发生栈溢出那么会产生一个名叫SIGSEGV的信号，也可以称为“段错误”。默认的，如果SIGSEGV
+信号被操作系统收到那么会立即终止产生该信号的程序而不是试图修复它或等待程序继续运行直到结束。(一般情况下称这种情况
+为程序“崩溃”)
+</p>
+
+<p>
+使用计算足够长位数斐波拉契数列的函数并不能很方便的观察到栈溢出，这个函数在崩溃之前会运行很长时间。这个算法虽然简单
+但是慢的离谱: 在计算第n位斐波拉契数列的函数fib(n)中，fib(1)或fib(2)被调用的次数和第n位斐波拉契数列的数值是相同的。
+</p>
+
+<p>
+所以，为了观察栈溢出请使用以下函数作为替代：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">int</span>
+<span style="color: #bc6ec5; font-weight: bold;">fill_stack</span> <span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">n</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+  <span style="color: #4f97d7; font-weight: bold;">if</span> <span style="color: #bc6ec5;">(</span>n &lt;= <span style="color: #a45bad;">1</span><span style="color: #bc6ec5;">)</span>  <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">&#27492;&#22788;&#38480;&#21046;&#36882;&#24402;&#28145;&#24230;</span><span style="color: #2aa1ae; background-color: #292e34;">  */</span>
+    <span style="color: #4f97d7; font-weight: bold;">return</span> <span style="color: #a45bad;">1</span>;
+  <span style="color: #4f97d7; font-weight: bold;">else</span>
+    <span style="color: #4f97d7; font-weight: bold;">return</span> fill_stack <span style="color: #bc6ec5;">(</span>n - <span style="color: #a45bad;">1</span><span style="color: #bc6ec5;">)</span>;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+
+<p>
+在使用gNewSense GUN/Linux的龙梦逸珑型电脑上，在不经过优化和使用默认配置的情况下运行以上程序将在第261907次h递归时崩溃。
+在其他平台上这个数字可能会有所不同。
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb65cc63" class="outline-3">
+<h3 id="orgb65cc63"><span class="section-number-3">1.3.</span> 例子： 迭代式斐波拉契函数</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+这里有一个速度更快的斐波拉契数列计算函数。之所以快是因为第一，它使用了迭代(重复或循环)而不是递归，迭代不会产生大量的函数调用。第二，因为只进行n次计算。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">int</span>
+<span style="color: #bc6ec5; font-weight: bold;">fib</span> <span style="color: #4f97d7;">(</span><span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">n</span><span style="color: #4f97d7;">)</span>
+<span style="color: #4f97d7;">{</span>
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">last</span> = <span style="color: #a45bad;">1</span>;   <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">&#21021;&#22987;&#21270;&#31532;&#19968;&#39033;.</span><span style="color: #2aa1ae; background-color: #292e34;">  */</span>
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">prev</span> = <span style="color: #a45bad;">0</span>;   <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">&#21021;&#22987;&#21270;&#31532;&#20108;&#39033;&#30340;&#25511;&#21046;&#21464;&#37327;</span><span style="color: #2aa1ae; background-color: #292e34;">  */</span>
+  <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span>;
+
+  <span style="color: #4f97d7; font-weight: bold;">for</span> <span style="color: #bc6ec5;">(</span>i = <span style="color: #a45bad;">1</span>; i &lt; n; ++i<span style="color: #bc6ec5;">)</span>
+    <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">&#22914;&#26524;n&#23567;&#20110;&#31561;&#20110;1&#37027;&#20040;&#24490;&#29615;&#19981;&#20250;&#34987;&#25191;&#34892;&#65292;</span><span style="color: #2aa1ae; background-color: #292e34;">  */</span>
+    <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">&#22240;&#20026;&#25191;&#34892;&#31532;&#19968;&#27425;&#36845;&#20195;&#26102;i &lt; n &#30340;&#20540;&#20026;&#20551;.</span><span style="color: #2aa1ae; background-color: #292e34;">  */</span>
+    <span style="color: #bc6ec5;">{</span>
+      <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">&#29616;&#22312;last &#26159;fib(i)</span>
+<span style="color: #2aa1ae; background-color: #292e34;">         &#32780;prev &#26159; fib(i-1)</span><span style="color: #2aa1ae; background-color: #292e34;">  */</span>
+      <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">&#35745;&#31639; fib (i + 1).</span><span style="color: #2aa1ae; background-color: #292e34;">  */</span>
+      <span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">next</span> = prev + last;
+      <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">&#23558;&#25968;&#20540;&#21518;&#31227;.</span><span style="color: #2aa1ae; background-color: #292e34;">  */</span>
+      prev = last;
+      last = next;
+      <span style="color: #2aa1ae; background-color: #292e34;">/* </span><span style="color: #2aa1ae; background-color: #292e34;">&#29616;&#22312; last &#26159; fib (i + 1)</span>
+<span style="color: #2aa1ae; background-color: #292e34;">         &#32780; prev &#26159; fib (i).</span>
+<span style="color: #2aa1ae; background-color: #292e34;">         &#20294;&#36825;&#31181;&#24773;&#20917;&#19981;&#20250;&#25345;&#32493;&#24456;&#20037;,</span>
+<span style="color: #2aa1ae; background-color: #292e34;">         &#22240;&#20026;&#19979;&#19968;&#27425;&#36845;&#20195;&#21363;&#23558;&#24320;&#22987;.</span><span style="color: #2aa1ae; background-color: #292e34;">  */</span>
+    <span style="color: #bc6ec5;">}</span>
+
+  <span style="color: #4f97d7; font-weight: bold;">return</span> last;
+<span style="color: #4f97d7;">}</span>
+</pre>
+</div>
+
+<p>
+迭代式的斐波拉契数列计算函数fib (n) 可以在线性时间内完成计算，即只进行n此迭代。迭代式的工作方式为：在遍历整个数列的过程中
+总是将最后两项的数值记录在last和prev中并且使用他们在下一次迭代中计算下一项的值。
+</p>
+
+<p>
+下面解释在这个迭代式函数中出现的新特性：
+</p>
+
+<ul class="org-ul">
+<li><p>
+内部语句块
+</p>
+
+<p>
+在函数内部，凡是有语句的地方都可以写一个语句块，看起来就是包含在两个大括号之间的内容{&#x2026;}，内容可以是空或多条语句与声明。
+(语句块可以嵌套)
+</p>
+
+<p>
+函数体就是语句块，这就是为什么它可以包含语句与声明。
+</p></li>
+
+<li><p>
+局部变量声明
+</p>
+
+<p>
+这个函数体包含生命以及语句。有三个声明在函数体的开始处以及第四个声明在一个内部代码块。这些声明都以int开始的意义是声明这些
+变量为整数类型。虽然一次声明可以声明多个变量，但是建议保持声明简短并尽量只声明一个变量。
+</p>
+
+<p>
+如果一个变量被生命在语句块内(不论是函数体还是内部语句块)那么它就是 <i>局部变量</i> 。局部变量仅在生命它的语句块中可用; 当程序
+运行出代码块后分配给这些变量的内存会被回收。这个例子中一共有四个局部变量: <b>last,prev,i,next</b> 。
+</p>
+
+<p>
+局部变声明大多如此:
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">type</span> <span style="color: #7590db;">variablename</span>;
+</pre>
+</div>
+<p>
+例如：
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">i</span>;
+</pre>
+</div>
+<p>
+声明一个名叫 <b>i</b> 的整数类型变量.
+</p>
+
+<ul class="org-ul">
+<li><p>
+初始化
+</p>
+
+<p>
+变量声明之后可以立即赋予一个初始数值：
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">type</span> <span style="color: #7590db;">variablename</span> = value;
+</pre>
+</div>
+
+<p>
+例如：
+</p>
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #ce537a; font-weight: bold;">int</span> <span style="color: #7590db;">last</span> = <span style="color: #a45bad;">1</span>;
+</pre>
+</div>
+
+<p>
+声明整型变量last并以数值1进行初始化。
+</p></li>
+
+<li><p>
+赋值
+</p>
+
+<p>
+一种使用 '=' 的表达式，作用是把一个新的数值存储到变量中，形如：
+</p>
+<div class="org-src-container">
+<pre class="src src-c">variable = value
+</pre>
+</div>
+
+<p>
+上面的表达式的作用是把 值(value)存放到变量(variable)中。
+</p></li>
+
+<li><p>
+表达式语句
+</p>
+
+<p>
+以分号';'结尾的表达式被称为表达式语句。表达式语句将计算表达式的值，并在之后将其丢弃(一般会使用赋值语句把表达式的值存储起来。译者注)
+</p>
+
+<p>
+一个有用的语句通常会改变一些变量的值或对其他语句产生作用，例如：函数调用或赋值。
+</p>
+
+<p>
+如果一个表达式不对任何变量或语句产生作用那么它是没有意义的，例如表达式语句 x;
+</p></li>
+</ul></li>
+
+<li><p>
+自增操作符
+</p>
+
+<p>
+自增操作符 '++' 是表达式 i = i +1 的简写。
+</p></li>
+
+<li><p>
+for 语句
+</p>
+
+<p>
+for 语句的作用是重复执行另外的语句，又可以成为循环。
+</p>
+
+<div class="org-src-container">
+<pre class="src src-c"><span style="color: #4f97d7; font-weight: bold;">for</span><span style="color: #4f97d7;">(</span>i = <span style="color: #a45bad;">1</span>; i &lt; n; ++i<span style="color: #4f97d7;">)</span>
+  body
+</pre>
+</div>
+
+<p>
+以上代码在循环之前先把值1赋给i。循环自身包含：
+</p>
+<ul class="org-ul">
+<li>判断 i&lt;n 是否为假</li>
+<li>执行 <i>body</i></li>
+<li>进行下一次循环(执行++i以使i中的数值加1)</li>
+</ul>
+
+<p>
+执行的效果是i等于0时执行 <i>body</i>, 等于1时执行 <i>body</i> 以此类推，直到i等于n时停止循环。
+</p>
+
+<p>
+函数体只能拥有有一条语句，你可以尝试写两条语句，但是执行后你会发现只有第一条得到了重复执行。
+</p>
+
+<p>
+如果需要在一个循环中执行多条语句那么可以使用语句块({&#x2026;}),就如同例子中的那样。
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2022-09-19 Mon 19:29</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
